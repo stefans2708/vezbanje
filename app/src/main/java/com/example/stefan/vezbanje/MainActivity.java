@@ -7,8 +7,11 @@ import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnSendIntent = findViewById(R.id.btn_custom_intent);
+        btnSendIntent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getPackageName()+".CUSTOM_INTENT_ASDF");
+//                intent.setAction(getPackageName()+".CUSTOM_INTENT_ASDF");
+                sendBroadcast(intent);
+            }
+        });
 //        if(wifiManager.isWifiEnabled()){
 //            wifiSwitch.setEnabled(true);
 //            wifiSwitch.setText("WiFI is ON");
@@ -54,12 +66,16 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         IntentFilter intentFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
         registerReceiver(wifiBroadcastReceiver,intentFilter);
+
+        IntentFilter intentFilter1 = new IntentFilter(getPackageName()+".CUSTOM_INTENT_ASDF");
+        registerReceiver(customBroadcastReceiver,intentFilter1);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
+        unregisterReceiver(wifiBroadcastReceiver);
+        unregisterReceiver(customBroadcastReceiver);
     }
 
     private BroadcastReceiver wifiBroadcastReceiver = new BroadcastReceiver() {
@@ -77,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
                     wifiSwitch.setText("WiFI is OFF");
                     break;
             }
+        }
+    };
+
+    private BroadcastReceiver customBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            TextView textView = findViewById(R.id.txt_custom_intent);
+            textView.setText(action);
         }
     };
 
