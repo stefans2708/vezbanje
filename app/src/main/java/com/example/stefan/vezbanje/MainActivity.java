@@ -49,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
+        Button btnRss = findViewById(R.id.btn_rss_activity);
+        btnRss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,RssfeedActivity.class);
+                startActivity(intent);
+            }
+        });
 //        if(wifiManager.isWifiEnabled()){
 //            wifiSwitch.setEnabled(true);
 //            wifiSwitch.setText("WiFI is ON");
