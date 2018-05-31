@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".EditDetailActivity">
 
+
+    <EditText
+        android:id="@+id/editdetail_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btn_editdetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editdetail_txt"
+        android:layout_marginTop="50dp"/>
+
 </android.support.constraint.ConstraintLayout>

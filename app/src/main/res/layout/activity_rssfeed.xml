@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".RssfeedActivity"
+android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="#0000FF"
+        >
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+<FrameLayout
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RssfeedActivity"
     android:orientation="horizontal">
+</FrameLayout>
 
-    <fragment
-        android:id="@+id/listFragment"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        class="com.example.stefan.vezbanje.ListFragment"
-        tools:layout="@layout/fragment_list">
-    </fragment>
-    <fragment
-        android:id="@+id/detailFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        class="com.example.stefan.vezbanje.DetailFragment"
-        tools:layout="@layout/fragment_detail">
-    </fragment>
 
-    
 </LinearLayout>
